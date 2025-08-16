@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <style>
+        body {
+            width: 350px;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+            margin: 0;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #0a66c2;
+        }
+
+        .section {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            font-size: 12px;
+        }
+
+        input, textarea, select {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 12px;
+            box-sizing: border-box;
+        }
+
+        textarea {
+            height: 80px;
+            resize: vertical;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #0a66c2;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background-color: #094c94;
+        }
+
+        button:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+
+        .status {
+            padding: 10px;
+            margin-top: 10px;
+            border-radius: 4px;
+            font-size: 12px;
+            display: none;
+        }
+
+        .status.success {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .status.error {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+
+        .generated-message {
+            background-color: #f8f9fa;
+            padding: 10px;
+            border-radius: 4px;
+            margin-top: 10px;
+            font-size: 12px;
+            line-height: 1.4;
+            white-space: pre-wrap;
+        }
+
+        .copy-btn {
+            background-color: #28a745;
+            margin-top: 5px;
+            padding: 8px;
+            font-size: 12px;
+        }
+
+        .copy-btn:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h3>LinkedIn Message Generator</h3>
+    </div>
+
+    <div class="section">
+        <label for="llmProvider">LLM Provider:</label>
+        <select id="llmProvider">
+            <option value="groq">Groq (Free - Recommended)</option>
+            <option value="perplexity">Perplexity API</option>
+            <option value="huggingface">Hugging Face (Free)</option>
+            <option value="openai">OpenAI (Paid)</option>
+        </select>
+    </div>
+
+    <div class="section">
+        <label for="apiKey" id="apiKeyLabel">Groq API Key:</label>
+        <input type="password" id="apiKey" placeholder="gsk_..." />
+        <small id="apiKeyHelp" style="font-size: 10px; color: #666;">
+            Get free key from console.groq.com
+        </small>
+    </div>
+
+    <div class="section">
+        <label for="serviceType">Your Service:</label>
+        <select id="serviceType">
+            <option value="web-development">Web Development</option>
+            <option value="mobile-app">Mobile App Development</option>
+            <option value="cloud-services">Cloud Services</option>
+            <option value="ai-ml">AI/ML Solutions</option>
+            <option value="custom">Custom IT Services</option>
+        </select>
+    </div>
+
+    <div class="section">
+        <label for="customService">Custom Service Description:</label>
+        <textarea id="customService" placeholder="Describe your specific IT services..."></textarea>
+    </div>
+
+    <button id="extractBtn">Extract Profile & Generate Message</button>
+    <button id="generateBtn" style="display: none;">Generate New Message</button>
+
+    <div id="status" class="status"></div>
+
+    <div id="generatedMessage" class="generated-message" style="display: none;"></div>
+    <button id="copyBtn" class="copy-btn" style="display: none;">Copy Message</button>
+
+    <script src="popup.js"></script>
+</body>
+</html>

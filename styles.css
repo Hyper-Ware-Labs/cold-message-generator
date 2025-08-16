@@ -1,0 +1,9 @@
+/* Minimal CSS for content script if needed */
+.cold-message-generator {
+    font-family: Arial, sans-serif;
+}
+
+/* Hide any injected elements by default */
+.lmg-hidden {
+    display: none !important;
+}
